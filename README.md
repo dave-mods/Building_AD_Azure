@@ -50,15 +50,20 @@ Now we need to set Clients-1's DNS settings to dc-1's private IP address. In ord
 ![image](https://github.com/user-attachments/assets/c656e79a-9a3e-42de-aae0-df97cefab5dd)
 ![image](https://github.com/user-attachments/assets/f0250edd-2081-48db-b405-c7babb41e17f)
 
-Inside of Client-1's IP configurations look for DNS Servers on the left hand side. In here we will change it from Inherit from virtual network to Custom. Once we change it to custom you will paste your Private IP from dc-1 into here. Make sure there is no space at the start or end or it will not work.
+Inside of Client-1's IP configurations look for DNS Servers on the left hand side. In here we will change it from Inherit from virtual network to Custom. Once we change it to custom you will paste your Private IP from dc-1 into here. Make sure there is no space at the start or end or it will not work. Click Save at the top and it will update.
 ![image](https://github.com/user-attachments/assets/ff0749e7-a6b9-4230-b3db-3433bb0b5be7)
 
+Now we can go back to the VM page in Azure and Restart Client-1 VM. Check the box next to Client-1 and hit Restart at the top. Once the VM Restarts we can take the Public IP Addrress and use Remote Desktop again to now log into Client-1.
+![image](https://github.com/user-attachments/assets/d5165e68-1623-4160-a28d-154f3523699c)
 
+As the VM loads uncheck everything. Now we will attempt to ping dc-1's private address. Tab back to Azure and grab it if you dont remember it. At the bottom of our Client-1 VM typer "Powershell" in the search bar and open it.
+![image](https://github.com/user-attachments/assets/996443a4-aa26-431b-af59-4b5f056f8d8e)
 
+Inside PowerShell type "ping" then paste or type dc-1's Private IP Address and hit enter. If it times out and you do not get a response double check that both VM's are on the same Virtual Network. If they are not on the same Virtual Network you will need to re-setup the VM's and make sure they are so this works.
+![image](https://github.com/user-attachments/assets/79d50746-fde7-457a-a70b-1c1a67ea140c)
 
+While doing this we can double check that the DNS server is pointing to dc-1 buy running "ipconfig /all". If we have done this properly DNS Servers should have the IP Address for our dc-1 VM.
+![image](https://github.com/user-attachments/assets/4b455474-3241-4937-b7f5-7d99619c1d33)
 
-
-
-
-
-
+# <b>Building Active Directory Infastructure Finished<b/>
+We've successfully created two Virtual Machines, one running Windows Server to act as a Domain Controller. The other VM as a client running Windows 10. In later projects we will deploy AD and run a script that will create users in the domain. Then we can log in from the client VM, then manage the accounts and update the group policies, all to simulate a real life environment. 
