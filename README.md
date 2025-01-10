@@ -23,3 +23,8 @@ Now to make a Virtual Machine we can navigate there through the Azure search bar
 ![image](https://github.com/user-attachments/assets/8c0b287a-322a-41f5-aa34-b6ff83d3a493)
 ![image](https://github.com/user-attachments/assets/df565138-46fa-456a-b81b-2daeea74a476)
 
+Now we will go back to the VM tab and set up a second VM for us to use. Create new. Again set the Resource group to Active_Directory_Lab. The VM name will be "client-1". Region will be the same a everything else you have setup so far. The Image will change to "Windows 10 Pro, version 22H2 x64 Gen2". Size 2 vcpus, 8 GiB. We will use the labuser and Cyberlab123! user name and password. If there is a Licensing box at the bottom be sure to check it. Then we wil hit next till we get to the Networking tab and make sure Virtual network is set to Active_Directory_VNet and then Review + Create.
+![image](https://github.com/user-attachments/assets/21467c3c-af21-4d04-b004-f6907aa069d4)
+![image](https://github.com/user-attachments/assets/dd76e4fd-f232-49af-ad95-2cea94831aaf)
+![image](https://github.com/user-attachments/assets/2649c617-08be-4772-8902-bc679a2e309c)
+
