@@ -28,3 +28,37 @@ Now we will go back to the VM tab and set up a second VM for us to use. Create n
 ![image](https://github.com/user-attachments/assets/dd76e4fd-f232-49af-ad95-2cea94831aaf)
 ![image](https://github.com/user-attachments/assets/2649c617-08be-4772-8902-bc679a2e309c)
 
+We now need to set our DC (Domain Controller) private IP address to "static" as by default it is set to "dynamic". I want this to be static because this DC will double as a DNS (Domain Name System) server which I will tell our client to use as a DNS server later. If the IP allocation setting were set to dynamic the IP address could change leaving the DNS configuration of our client invalid. So I'll go to the network settings of the DC and switch the IP allocation to static.
+
+Now we will go to the VM tab on Azure and click the dc-1 VM to open it and click Network settings. We are going to click the Network interface/ IP configuration at the top. In here we will click ipconfig1 at the bottom and in this window we can see the Private IP address settings with Allocation under it. Here we can set it to Static and Save it.
+![image](https://github.com/user-attachments/assets/20119468-bf0a-4b7c-baff-43b11ae0eece)
+![image](https://github.com/user-attachments/assets/10b31a1b-0a12-429e-8168-c8d24c6dfd50)
+
+Our next step is to login to dc-1 VM. Back on the VM tab on Azure grab the dc-1 VM public IP address and use the remote desktop to log in.
+![image](https://github.com/user-attachments/assets/c9c75717-9ffa-412f-9691-3552090f8a12)
+
+Once loged in if you do not see the Server Manager Dashboard there is a chance you used the wrong IP or a setting got skipped or messed up in the VM.
+![image](https://github.com/user-attachments/assets/b81dffc6-9c10-473d-ae47-5e1a837bbd30)
+
+Inside the Domain Controller right click the start button and select run. In the Run box we will type wf.msc. This will bring up the Windows Defender Firewall window. In here we will be disabling the fire wall (I wouldnt reccomend this in real life. This is just for practice on a machine with no personal data on it).
+![image](https://github.com/user-attachments/assets/dfd3229c-3df7-40d1-964b-362583ffa04c)
+
+To turn the firewall of click Windows Defender Firewall Properties button. On the Domain, Private, Public Profile tabs switch Firewall state to off then Apply and OK
+![image](https://github.com/user-attachments/assets/97065283-121b-415f-b552-0e27a730e90c)
+
+Now we need to set Clients-1's DNS settings to dc-1's private IP address. In order to do this go back to the VM tab on Azure, open dc-1 VM and highlight and copy the Private IP Address. Go to Client-1 VM, Networking, Network Settings and open the Network Interface/ IP configuration.
+![image](https://github.com/user-attachments/assets/c656e79a-9a3e-42de-aae0-df97cefab5dd)
+![image](https://github.com/user-attachments/assets/f0250edd-2081-48db-b405-c7babb41e17f)
+
+Inside of Client-1's IP configurations look for DNS Servers on the left hand side. In here we will change it from Inherit from virtual network to Custom. Once we change it to custom you will paste your Private IP from dc-1 into here. Make sure there is no space at the start or end or it will not work.
+![image](https://github.com/user-attachments/assets/ff0749e7-a6b9-4230-b3db-3433bb0b5be7)
+
+
+
+
+
+
+
+
+
+
